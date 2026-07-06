@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AURA - A premium interactive image gallery featuring smooth transitions, categories, searching, and a dynamic glassmorphic lightbox view.">
+    <meta name="keywords" content="image gallery, responsive gallery, glassmorphism, portfolio, photography, web design">
+    <meta name="author" content="Antigravity">
+    <title>AURA // Premium Interactive Vision Gallery</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Ambient Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="gallery-header">
+            <div class="brand">
+                <h1 class="logo">AURA<span class="dot">.</span></h1>
+                <p class="tagline">Interactive Vision Gallery</p>
+            </div>
+            
+            <!-- Search Control -->
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search by title, tag, or category..." autocomplete="off" aria-label="Search gallery">
+                <div class="search-icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controls Section: Categories Filter -->
+        <nav class="controls-section" aria-label="Gallery filters">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">
+                    <span class="btn-text">All</span>
+                    <span class="badge" id="count-all">0</span>
+                </button>
+                <button class="filter-btn" data-filter="nature">
+                    <span class="btn-text">Nature</span>
+                    <span class="badge" id="count-nature">0</span>
+                </button>
+                <button class="filter-btn" data-filter="architecture">
+                    <span class="btn-text">Architecture</span>
+                    <span class="badge" id="count-architecture">0</span>
+                </button>
+                <button class="filter-btn" data-filter="animals">
+                    <span class="btn-text">Animals</span>
+                    <span class="badge" id="count-animals">0</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <div class="gallery-grid" id="gallery-grid" role="region" aria-live="polite">
+                <!-- Cards will be dynamically injected by JavaScript -->
+            </div>
+            
+            <!-- No Results Message -->
+            <div class="no-results" id="no-results">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                <h3>No visuals match your search</h3>
+                <p>Try checking your spelling or adjusting your filters</p>
+                <button class="reset-btn" id="reset-search-btn">Reset Search</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="gallery-footer">
+            <p>&copy; 2026 AURA Gallery. Crafted with passion & precision.</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+        <!-- Close button overlay -->
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Navigation Buttons -->
+        <button class="lightbox-nav nav-prev" id="lightbox-prev" aria-label="Previous Image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="lightbox-nav nav-next" id="lightbox-next" aria-label="Next Image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <!-- Lightbox Content -->
+        <div class="lightbox-wrapper">
+            <div class="lightbox-content">
+                <div class="lightbox-media-container">
+                    <img src="" alt="" class="lightbox-img" id="lightbox-img">
+                </div>
+                
+                <!-- Info Drawer (Glassmorphic) -->
+                <div class="lightbox-info">
+                    <div class="info-header">
+                        <span class="info-category" id="lightbox-category">Category</span>
+                        <span class="info-counter" id="lightbox-counter">1 of 6</span>
+                    </div>
+                    <h2 class="info-title" id="lightbox-title">Visual Title</h2>
+                    <p class="info-desc" id="lightbox-desc">Detailed description of the visual element goes here. This explains the artistic vision and context.</p>
+                    <div class="info-tags" id="lightbox-tags">
+                        <!-- Tags will be dynamically injected -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Script -->
+    <script src="script.js"></script>
+</body>
+</html>
