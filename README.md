@@ -27,3 +27,17 @@ Contains six high-resolution images used in the gallery:
 - `leopard.png`
 - `minimal.png`
 - `mountain.png`
+
+Project/
+│── index.html
+│── styles.css
+│── script.js
+│── README.md
+│
+└── assets/
+    ├── cyberpunk.png
+    ├── jellyfish.png
+    ├── lake.png
+    ├── leopard.png
+    ├── minimal.png
+    └── mountain.png
