@@ -1,17 +1,29 @@
-# Wallpaper Gallery
+### 📦 Completed Deliverables
 
-A simple wallpaper gallery built using HTML, CSS, and JavaScript.
+### 📄 index.html
+- Semantic HTML structure with a modern search bar.
+- Category filter pills.
+- Responsive image gallery grid.
+- Accessibility-friendly lightbox for viewing images.
 
-## Project Preview
+### 🎨 styles.css
+- Modern glassmorphism UI design.
+- Ambient background glow effects.
+- Responsive CSS Grid layout.
+- Smooth hover animations and transitions.
 
-![Cyberpunk](assets/cyberpunk.png)
+### ⚙️ script.js
+- Real-time search functionality.
+- Category-based image filtering.
+- Dynamic lightbox with image navigation.
+- Keyboard controls (Arrow keys and Escape key support).
 
-![Jellyfish](assets/jellyfish.png)
+### 🖼️ assets/
+Contains six high-resolution images used in the gallery:
 
-![Lake](assets/lake.png)
-
-![Leopard](assets/leopard.png)
-
-![Minimal](assets/minimal.png)
-
-![Mountain](assets/mountain.png)
+- `cyberpunk.png`
+- `jellyfish.png`
+- `lake.png`
+- `leopard.png`
+- `minimal.png`
+- `mountain.png`
